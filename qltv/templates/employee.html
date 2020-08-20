@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin nhân viên</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">THÔNG TIN NHÂN VIÊN</h1>
+    {% if err_msg %}
+        <h1 class="text-danger">{{ err_msg }}</h1>
+    {% endif %}
+    <form method="post">
+        <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" name="name" class="form-control"  />
+        </div>
+        <div class="form-group">
+            <label>Ngày sinh</label>
+            <input type="date" name="birthday" class="form-control"  />
+        </div>
+        <div class="form-group">
+            <label>Bằng cấp</label>
+            <select class="form-control" name="bangcap">
+                <option>Tú Tài</option>
+                <option>Trung Cấp</option>
+                <option>Cao Đẳng</option>
+                <option>Đại học</option>
+                <option>Thạc Sĩ</option>
+                <option>Tiến Sĩ</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Chức vụ</label><br>
+            <div class="radiogroup">
+                <input type="radio" name="gender" value="giamdoc" checked class="radio"> Giám Đốc
+                <input type="radio" name="gender" value="phogd" class="radio"> Phó Giám Đốc
+                <input type="radio" name="gender" value="truongphong" class="radio"> Trưởng Phòng
+                <input type="radio" name="gender" value="phophong" class="radio"> Phó Phòng
+                <input type="radio" name="gender" value="nv" class="radio"> Nhân viên<br>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input name="address" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Điện thoại</label>
+            <input type="text" name="phones" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                   maxlength="10" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Bộ phận</label>
+            <select class="form-control" name="bophan">
+                <option>Thủ Thư</option>
+                <option>Thủ Kho</option>
+                <option>Thủ Quỹ</option>
+                <option>Ban Giám Đốc</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password"  class="form-control" />
+        </div>
+        <div>
+            <input type="submit" value="{% if product %}Cập nhật{%else%}{%endif%} Cập nhật thông tin" class="btn btn-danger" />
+        </div>
+    </form>
+</div>
+</body>
+</html>
