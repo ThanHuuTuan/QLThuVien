@@ -1,5 +1,6 @@
 from flask import render_template
 from qltv import app
+from qltv import db
 
 @app.route("/")
 def index():
@@ -19,4 +20,4 @@ def employee_list():
     return render_template("employee_list.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    db.create_all()
