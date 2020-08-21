@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Trang chủ</title>
+<title>Phân quyền</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -20,6 +20,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="static/js/metisMenu.min.js"></script>
 <link href="{{ url_for('static', filename='css/customs.css') }}" rel="stylesheet" />
 <!--//Metis Menu -->
+<style>
+<style>
+#chartdiv {
+  width: 100%;
+  height: 295px;
+}
+</style>
+
 
 	<!-- slideshow -->
 					<link href="{{ url_for('static', filename='css/owl.carousel.css') }}" rel="stylesheet" />
@@ -45,8 +53,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       <nav class="navbar navbar-inverse">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href= "{{ url_for('index') }}"><span class="fa fa-home"></span> OPENU<span class="dashboard_text">THƯ VIỆN</span></a></h1>
+            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-home"></span> OPENU<span class="dashboard_text">THƯ VIỆN</span></a></h1>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
@@ -138,6 +150,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
+				<div class="profile_details_left"><!--notifications of menu start -->
+					<div class="clearfix"> </div>
+				</div>
+				<!--notification menu end -->
 				<div class="clearfix"> </div>
 			</div>
 			<div class="header-right">
@@ -182,81 +198,79 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		<!-- //header-ends -->
 		<!-- main content start-->
 		<div id="page-wrapper">
-			<div class="main-page">
-			<div class="col_3">
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-					<i class="pull-left fa fa-users dollar2 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>Nhân viên</strong></h5>
+                <div class="col-sm-12">
+                    <div class="card px-3">
+                        <div class="card-header_top">
+                            <h2 class="text-uppercase text-center">Danh sách quyền</h2>
+                        </div>
+                        <div class="card-header_bt">
+                            <a href="role-add.html" class="btn btn-sm btn-primary">Thêm mới</a>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Bộ Phận</th>
+                                            <th>Mô Tả</th>
+                                            <th>Hành Động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyRole">
+                                        <tr>
+                                            <th>1</th>
+                                            <td>Thủ Thư</td>
+                                            <td>Quản trị lập thẻ độc giả, ghi nhận mất sách, mượn sách, trả sách, tra cứu, lập báo cáo</td>
+                                            <td><a href="#"
+                                                    class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                                                <a href="#"
+                                                    class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <td>Thủ Kho</td>
+                                            <td>Quản trị tiếp nhận sách mới, thanh lý sách, tra cứu sách, lập báo cáo</td>
+                                            <td><a href="#"
+                                                    class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                                                <a href="#"
+                                                    class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <td>Thủ Quỹ</td>
+                                            <td>Quản trị lập phiếu thu, tra cứu sách, lập báo cáo</td>
+                                            <td><a href="#"
+                                                    class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                                                <a href="#"
+                                                    class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <td>Ban Giám Đốc</td>
+                                            <td>Quản trị toàn bộ hệ thống</td>
+                                            <td><a href="#"
+                                                    class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                                                <a href="#"
+                                                    class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-        	</div>
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>Độc giả</strong></h5>
-                    </div>
-                </div>
-        	</div>
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-book user2 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>Sách</strong></h5>
-                    </div>
-                </div>
-        	</div>
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-					<i class="pull-left fa fa-sign-language icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>Mượn trả sách</strong></h5>
-                    </div>
-                </div>
-        	 </div>
-        	<div class="col-md-3 widget">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>Báo cáo</strong></h5>
-                    </div>
-                </div>
-        	 </div>
-        	<div class="clearfix"> </div>
-		</div>
-				<!-- slideshow-->
-		<div class="charts">
-			<div class="mid-content-top charts-grids">
-				<div class="middle-content">
-						<h4 class="title">Carousel Slider</h4>
-					<!-- start content_slider -->
-					<div id="owl-demo" class="owl-carousel text-center">
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider1.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider2.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider3.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider4.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider5.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider6.jpg" alt="name"></div>
-						<div class="item">
-							<img class="lazyOwl img-responsive" data-src="static/images/slider7.jpg" alt="name"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-					<!--//---->
-			</div>
+
+
+
 		</div>
 	<!--footer-->
 	<div class="footer">
-	   <p>&copy; Kim Hang | Design by <a href="https://ou.edu.vn/" target="_blank">OU</a></p>
+
 	</div>
     <!--//footer-->
 	</div>

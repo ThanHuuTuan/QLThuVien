@@ -1,21 +1,278 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Danh sách nhân viên</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-</head>
-<body>
-<div class="container">
-    <h1 class="text-center">DANH SÁCH NHÂN VIÊN</h1>
-    <table border="1" width="100%">
-        <td></td>
-        <td>
-            <input type="submit" value="Cập nhật thông tin" class="btn btn-danger" />
-        </td>
-    </table>
-</div>
+<title>Danh sách nhân viên</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
+<!-- Bootstrap Core CSS -->
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/SidebarNav.min.css') }}" rel="stylesheet" />
+
+<script src="static/js/jquery-1.11.1.min.js"></script>
+<script src="static/js/bootstrap.js"> </script>
+<!-- Metis Menu -->
+<script src="static/js/metisMenu.min.js"></script>
+<link href="{{ url_for('static', filename='css/customs.css') }}" rel="stylesheet" />
+<!--//Metis Menu -->
+<style>
+<style>
+#chartdiv {
+  width: 100%;
+  height: 295px;
+}
+</style>
+
+
+	<!-- slideshow -->
+					<link href="{{ url_for('static', filename='css/owl.carousel.css') }}" rel="stylesheet" />
+					<script src="static/js/owl.carousel.js"></script>
+						<script>
+							$(document).ready(function() {
+								$("#owl-demo").owlCarousel({
+									items : 3,
+									lazyLoad : true,
+									autoPlay : true,
+									pagination : true,
+									nav:true,
+								});
+							});
+						</script>
+					<!-- //requried-jsfiles-for owl -->
+</head>
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-home"></span> OPENU<span class="dashboard_text">THƯ VIỆN</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+				<li class="header">MENU</li>
+				<li class="treeview">
+				  <a href= "{{ url_for('employee_list') }}">
+				  <i class="fa fa-male"></i>
+				  <span>Nhân viên</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="charts.html">
+				  <i class="fa fa-group"></i>
+				  <span>Độc giả</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-book"></i>
+				  <span>Sách</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Sách mới</a></li>
+					<li><a href="media.html"><i class="fa fa-angle-right"></i> Sách thanh lý</a></li>
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Sách mất</a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-sign-language"></i>
+				  <span>Mượn trả sách</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Mượn sách</a></li>
+					<li><a href="media.html"><i class="fa fa-angle-right"></i> Trả sách</a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-money"></i>
+				  <span>Tiền phạt</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-pie-chart"></i>
+				  <span>Báo cáo thống kê</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					  <li><a href="grids.html"><i class="fa fa-angle-right"></i> Mượn sách theo thể loại</a></li>
+					  <li><a href="media.html"><i class="fa fa-angle-right"></i> Sách trả trễ</a></li>
+					  <li><a href="media.html"><i class="fa fa-angle-right"></i> Độc giả nợ tiền phạt</a></li>
+					</ul>
+				</li>
+				<li class="treeview">
+				  <a href= "{{ url_for('permission') }}">
+				  <i class="fa fa-folder"></i> <span>Quyền</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="header">TÙY CHỌN</li>
+				<li class="treeview">
+				  <li><a href= "{{ url_for('login') }}"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+				</li>
+				<li class="treeview">
+				  <a href="charts.html">
+				  <i class="fa fa-outdent"></i>
+				  <span>Đăng xuất</span>
+				  </a>
+				</li>
+
+			  </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+				<div class="profile_details_left"><!--notifications of menu start -->
+					<div class="clearfix"> </div>
+				</div>
+				<!--notification menu end -->
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right">
+				<!--search-box-->
+				<div class="search-box">
+					<form class="input">
+						<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
+						<label class="input__label" for="input-31">
+							<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+								<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+							</svg>
+						</label>
+					</form>
+				</div><!--//end-search-box-->
+				<div class="profile_details">
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">
+									<span class="prfil-img"><img src="static/images/admin.jpg" alt=""> </span>
+									<div class="user-name">
+										<p>Admin Name</p>
+										<span>Administrator</span>
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+                <div class="col-sm-12">
+                    <div class="card px-3">
+                        <div class="card-header_top">
+                            <h2 class="text-uppercase text-center">Danh sách nhân viên</h2>
+                        </div>
+                        <div class="card-header_bt">
+                            <a href= "{{ url_for('employee') }}" class="btn btn-sm btn-primary">Thêm mới</a>
+                        </div>
+                        <div class="card-block table-border-style">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Họ và Tên</th>
+                                            <th>Email</th>
+                                            <th>Bộ Phận</th>
+                                            <th>Hành Động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyRole">
+                                        <tr>
+                                            <th>1</th>
+                                            <td>Thủ Thư</td>
+                                            <td>Quản trị lập thẻ độc giả, ghi nhận mất sách, mượn sách, trả sách, tra cứu, lập báo cáo</td>
+                                            <td>Thủ Kho</td>
+                                            <td><a href= "{{ url_for('employee') }}" class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                                                <a href="#" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+		</div>
+	<!--footer-->
+	<div class="footer">
+
+	</div>
+    <!--//footer-->
+	</div>
+<!-- Classie --><!-- for toggle left push menu script -->
+		<script src="static/js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+
+	<!-- side nav js -->
+	<script src='static/js/SidebarNav.min.js' type='text/javascript'></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
 </body>
 </html>
