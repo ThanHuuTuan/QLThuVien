@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
 from sqlalchemy.orm import relationship
-from flask_sqlalchemy import SQLAlchemy
+from flask_admin.contrib.sqla import ModelView
 
-from qltv import db
+from qltv import db, admin
+
 
 class BoPhan(db.Model):
     __tablename__ = "bophan"
@@ -13,6 +14,22 @@ class BoPhan(db.Model):
     def __str__(self):
         return self.tenbophan
 
+class BangCap(db.Model):
+    __tablename__ = "bangcap"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tenbangcap = Column(String(50), nullable=False)
+    nhanviens = relationship('NhanVien', backref='bangcap', lazy=True)
+    def __str__(self):
+        return self.tenbangcap
+
+class ChucVu(db.Model):
+    __tablename__ = "chucvu"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    tenchucvu = Column(String(50), nullable=False)
+    nhanviens = relationship('NhanVien', backref='chucvu', lazy=True)
+    def __str__(self):
+        return self.tenchucvu
+
 class NhanVien(db.Model):
     __tablename__ = "nhanvien"
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -20,9 +37,9 @@ class NhanVien(db.Model):
     ngaysinh = Column(Date, nullable=False)
     diachi = Column(String(100), nullable=False)
     dienthoai = Column(Integer, nullable=False)
-    tenbangcap = Column(String(50))
-    tenchucvu = Column(String(50))
     bophan_id = Column(Integer, ForeignKey(BoPhan.id), nullable=False)
+    bangcap_id = Column(Integer, ForeignKey(BangCap.id), nullable=False)
+    chucvu_id = Column(Integer, ForeignKey(ChucVu.id), nullable=False)
 
     def __str__(self):
         return self.hoten
@@ -32,6 +49,7 @@ class TheLoai(db.Model):
     id = Column(Integer, primary_key=True,autoincrement=True)
     ten = Column(String(50), nullable=False)
     sachs = relationship('Sach', backref='theloai', lazy=True)
+
     def __str__(self):
         return self.ten
 
@@ -50,6 +68,25 @@ class Sach(db.Model):
     def __str__(self):
         return self.tensach
 
+
+class BoPhanModelView(ModelView):
+    form_columns = ('tenbophan', )
+class BangCapModelView(ModelView):
+    form_columns = ('tenbangcap', )
+class ChucVuModelView(ModelView):
+    form_columns = ('tenchucvu', )
+class TheLoaiModelView(ModelView):
+    form_columns = ('ten', )
+
+admin.add_view(ModelView(Sach, db.session))
+# admin.add_view(TheLoaiModelView(TheLoai, db.session))
+admin.add_view(ModelView(NhanVien, db.session))
+# admin.add_view(BoPhanModelView(BoPhan, db.session))
+# admin.add_view(BangCapModelView(BangCap, db.session))
+# admin.add_view(ChucVuModelView(ChucVu, db.session))
+
+
+db.create_all()
 #
 # class PhieuMuonSach(db.Model):
 #     __tablename__="phieumuonsach"

@@ -1,11 +1,9 @@
 from flask import render_template
 from qltv import app
-from qltv import db
-
+from qltv.models import *
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/login")
 def login():
@@ -19,5 +17,9 @@ def employee():
 def employee_list():
     return render_template("employee_list.html")
 
+@app.route("/permission")
+def permission():
+    return render_template("permission.html")
+
 if __name__ == "__main__":
-    db.create_all()
+    app.run(debug=True)
