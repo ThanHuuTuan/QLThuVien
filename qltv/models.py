@@ -5,6 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from qltv import db, admin
 
 
+
 class BoPhan(db.Model):
     __tablename__ = "bophan"
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -78,7 +79,11 @@ class ChucVuModelView(ModelView):
 class TheLoaiModelView(ModelView):
     form_columns = ('ten', )
 
-admin.add_view(ModelView(Sach, db.session))
+class SearchView(ModelView):
+    column_searchable_list = ['tensach']
+
+admin.add_view(SearchView(Sach, db.session))
+# admin.add_view(SearchView(Sach, db.session))
 # admin.add_view(TheLoaiModelView(TheLoai, db.session))
 admin.add_view(ModelView(NhanVien, db.session))
 # admin.add_view(BoPhanModelView(BoPhan, db.session))

@@ -1,1 +1,270 @@
 {% extends 'admin/master.html' %}
+
+{% block head_meta %}
+{{ super() }}
+<title>Trang chủ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+{% endblock %}
+
+{% block head_css %}
+{{ super() }}
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/SidebarNav.min.css') }}" rel="stylesheet" />
+
+<script src="static/js/jquery-1.11.1.min.js"></script>
+<script src="static/js/bootstrap.js"> </script>
+<!-- Metis Menu -->
+<script src="static/js/metisMenu.min.js"></script>
+<link href="{{ url_for('static', filename='css/customs.css') }}" rel="stylesheet" />
+<!--//Metis Menu -->
+
+	<!-- slideshow -->
+					<link href="{{ url_for('static', filename='css/owl.carousel.css') }}" rel="stylesheet" />
+					<script src="static/js/owl.carousel.js"></script>
+						<script>
+							$(document).ready(function() {
+								$("#owl-demo").owlCarousel({
+									items : 3,
+									lazyLoad : true,
+									autoPlay : true,
+									pagination : true,
+									nav:true,
+								});
+							});
+						</script>
+					<!-- //requried-jsfiles-for owl -->
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            </button>
+            <h1><a class="navbar-brand" href= "{{ url_for('index') }}"><span class="fa fa-home"></span> OPENU<span class="dashboard_text">THƯ VIỆN</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+				<li class="header">MENU</li>
+				<li class="treeview">
+				  <a href= "{{ url_for('employee_list') }}">
+				  <i class="fa fa-male"></i>
+				  <span>Nhân viên</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="charts.html">
+				  <i class="fa fa-group"></i>
+				  <span>Độc giả</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-book"></i>
+				  <span>Sách</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Sách mới</a></li>
+					<li><a href="media.html"><i class="fa fa-angle-right"></i> Sách thanh lý</a></li>
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Sách mất</a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-sign-language"></i>
+				  <span>Mượn trả sách</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="grids.html"><i class="fa fa-angle-right"></i> Mượn sách</a></li>
+					<li><a href="media.html"><i class="fa fa-angle-right"></i> Trả sách</a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-money"></i>
+				  <span>Tiền phạt</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+				  <i class="fa fa-pie-chart"></i>
+				  <span>Báo cáo thống kê</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				  <ul class="treeview-menu">
+					  <li><a href="grids.html"><i class="fa fa-angle-right"></i> Mượn sách theo thể loại</a></li>
+					  <li><a href="media.html"><i class="fa fa-angle-right"></i> Sách trả trễ</a></li>
+					  <li><a href="media.html"><i class="fa fa-angle-right"></i> Độc giả nợ tiền phạt</a></li>
+					</ul>
+				</li>
+				<li class="treeview">
+				  <a href= "{{ url_for('permission') }}">
+				  <i class="fa fa-folder"></i> <span>Quyền</span>
+				  <i class="fa fa-angle-left pull-right"></i>
+				  </a>
+				</li>
+				<li class="header">TÙY CHỌN</li>
+				<li class="treeview">
+				  <li><a href= "{{ url_for('login') }}"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+				</li>
+				<li class="treeview">
+				  <a href="charts.html">
+				  <i class="fa fa-outdent"></i>
+				  <span>Đăng xuất</span>
+				  </a>
+				</li>
+
+			  </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right">
+				<!--search-box-->
+				<div class="search-box">
+					<form class="input">
+						<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
+						<label class="input__label" for="input-31">
+							<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+								<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+							</svg>
+						</label>
+					</form>
+				</div><!--//end-search-box-->
+				<div class="profile_details">
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">
+									<span class="prfil-img"><img src="static/images/admin.jpg" alt=""> </span>
+									<div class="user-name">
+										<p>Admin Name</p>
+										<span>Administrator</span>
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+			<div class="col_3">
+        	<div class="col-md-3 widget widget1">
+        		<div class="r3_counter_box">
+					<i class="pull-left fa fa-users dollar2 icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>Nhân viên</strong></h5>
+                    </div>
+                </div>
+        	</div>
+        	<div class="col-md-3 widget widget1">
+        		<div class="r3_counter_box">
+                    <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>Độc giả</strong></h5>
+                    </div>
+                </div>
+        	</div>
+        	<div class="col-md-3 widget widget1">
+        		<div class="r3_counter_box">
+                    <i class="pull-left fa fa-book user2 icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>Sách</strong></h5>
+                    </div>
+                </div>
+        	</div>
+        	<div class="col-md-3 widget widget1">
+        		<div class="r3_counter_box">
+					<i class="pull-left fa fa-sign-language icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>Mượn trả sách</strong></h5>
+                    </div>
+                </div>
+        	 </div>
+        	<div class="col-md-3 widget">
+        		<div class="r3_counter_box">
+                    <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
+                    <div class="stats">
+                      <h5><strong>Báo cáo</strong></h5>
+                    </div>
+                </div>
+        	 </div>
+        	<div class="clearfix"> </div>
+		</div>
+				<!-- slideshow-->
+		<div class="charts">
+			<div class="mid-content-top charts-grids">
+				<div class="middle-content">
+						<h4 class="title">Carousel Slider</h4>
+					<!-- start content_slider -->
+					<div id="owl-demo" class="owl-carousel text-center">
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider1.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider2.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider3.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider4.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider5.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider6.jpg" alt="name"></div>
+						<div class="item">
+							<img class="lazyOwl img-responsive" data-src="static/images/slider7.jpg" alt="name"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+					<!--//---->
+			</div>
+		</div>
+	<!--footer-->
+	<div class="footer">
+	   <p>&copy; Kim Hang | Design by <a href="https://ou.edu.vn/" target="_blank">OU</a></p>
+	</div>
+    <!--//footer-->
+	</div>
+{% endblock %}
